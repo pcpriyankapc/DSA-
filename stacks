@@ -1,1 +1,30 @@
-## Next Greater Element 
+Next Greater Element 
+
+https://practice.geeksforgeeks.org/problems/next-larger-element-1587115620/1#
+
+public static long[] nextLargerElement(long[] arr,int n){
+
+long[] nge=new long[arr.length];
+Stack<Long> st=new Stack<>();
+st.push(arr[arr.length-1]);
+nge[arr.length-1]=-1;
+
+for(int i=arr.length-2;i>=0;i--){
+
+while(st.size()>0 && arr[i]>=st.peek()){
+     st.pop();
+}
+   if(st.size()==0){
+     nge[i]=-1;
+   }else{
+   nge[i]=st.peek();
+   }
+   st.push(arr[i]);
+ }
+ return nge;
+ }
+}
+
+
+Expected Time Complexity : O(N)
+Expected Auxilliary Space : O(N)
